@@ -7,23 +7,19 @@ import VueApollo from 'vue-apollo'
 
 const httpLink = new HttpLink({ uri: 'http://localhost:4000/' })
 
-// apollo client setup
 const client = new ApolloClient({
   link: httpLink,
   cache: new InMemoryCache(),
   connectToDevTools: true
 })
 
-// Install the vue plugin
 Vue.use(VueApollo)
 
-// Apollo provider init
 const apolloProvider = new VueApollo({
   defaultClient: client
 })
 
-// Start the app
-const a = new Vue({
+new Vue({ // eslint-disable-line no-new
   el: '#app',
   provide: apolloProvider.provide(),
   render: h => h(App)
