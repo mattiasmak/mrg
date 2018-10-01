@@ -37,13 +37,11 @@ module.exports = (data) => {
     return (gameColletionIds && game.gameCollectionIds && gameColletionIds.some(v => game.gameCollectionIds.includes(v))) || !gameColletionIds
   }
   const filterTags = tags => game => {
-    console.log(tags, game.tags)
     return (tags && game.tags && tags.some(v => game.tags.includes(v))) || !tags
   }
 
   const getFilteredData = (filter, itemsPerPage = 10, sortBy = 'name') => {
     if (!filter)filter = { gameProviders: null, gameCollectionIds: null, tags: null }
-    console.log(filter)
     const filteredData = data
       .filter(filterGameProvider(filter.gameProviders))
       .filter(filterGameCollectionIds(filter.gameCollectionIds))
