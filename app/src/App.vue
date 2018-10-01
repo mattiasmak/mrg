@@ -59,6 +59,7 @@ export default {
         }
       }`,
       update(res) {
+        this.showMoreEnabled = res.games.pages > 1
         return res.games
       },
       variables() {
