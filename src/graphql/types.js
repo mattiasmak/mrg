@@ -65,6 +65,7 @@ type PagedGames {
 input ListFilter {
   gameProviders: [String] = null
   gameCollectionIds: [String] = null
+  tags: [String] = null
 }
 
 type Query {
