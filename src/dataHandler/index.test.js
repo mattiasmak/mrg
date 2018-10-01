@@ -73,6 +73,7 @@ describe('Data Handler', () => {
     it('Should honor itemsPerPage', () => {
       const data = dataHandler(testData).getFilteredData(null, 5)
       expect(data.page(0).length).to.equal(5)
+      expect(data.pages).to.equal(2)
     })
   })
 })
