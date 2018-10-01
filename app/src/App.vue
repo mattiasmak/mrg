@@ -2,14 +2,12 @@
   <div id="app">
     <h2>Simple Game Grid</h2>
 
-
     <div  v-if="tags">
       <select v-model="selected">
         <option value="">ALL TAGS</option>
         <option v-for="tag in tags" v-bind:key="tag.id" :id="tag.id">{{tag.id}}</option>
       </select>
     </div>
-    
 
     <div class="game-list" v-if="games">
       <div class="game-list-item" v-for="game in games.games" v-bind:key="game.id">
@@ -63,6 +61,7 @@ export default {
       update(res) {
         this.showMoreEnabled = res.games.currentPage+1 < res.games.pages
         this.totalPages = res.games.pages
+        this.page = res.games.currentPage
         return res.games
       },
       variables() {
