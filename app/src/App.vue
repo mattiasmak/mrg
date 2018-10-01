@@ -1,8 +1,8 @@
 <template>
   <div id="app">
     <h2>Simple Game Grid</h2>
-    <div class="tag-list" v-if="games">
-      <div class="tag-list-item" v-for="game in games.games" v-bind:key="game.name">
+    <div class="game-list" v-if="games">
+      <div class="game-list-item" v-for="game in games.games" v-bind:key="game.name">
         <img :src="game.thumbnailUrl"> 
       </div>
       <div class="actions">
@@ -11,6 +11,18 @@
     </div>
   </div>
 </template>
+
+<style>
+  .game-list {
+    display:inline-block;
+  }
+  .game-list-item {
+    width: 266px;
+    height: 200px;
+    padding: 10px;
+    display:inline-flex;
+  }
+</style>
 
 <script>
 import gql from 'graphql-tag'
@@ -23,11 +35,9 @@ export default {
     showMoreEnabled: true,
   }),
   apollo: {
-    // Pages
     games: {
-      // GraphQL Query
-      query: gql`query listGames ($page: Int) {
-        games: listGames(page: $page, filter: {gameProviders:["PLAYNGO"]}) {
+      query: gql`query listGames ($page: Int, $pageSize: Int) {
+        games: listGames(page: $page, pageSize: $pageSize, filter: {gameProviders:["PLAYNGO"]}) {
           pages
           currentPage
           games {
@@ -36,9 +46,9 @@ export default {
           }
         }
       }`,
-      // Initial variables
       variables: {
-        page: 0
+        page: 0,
+        pageSize: 10
       },
     },
   },
