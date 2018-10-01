@@ -3,10 +3,8 @@
 Simple and minimal game grid renderer.
 
 
-<br />
-
 ## Requirements
-Requires graphql to be started at localhost:4000
+Requires graphql to be started at `localhost:4000`
 
 
 ## Getting started
