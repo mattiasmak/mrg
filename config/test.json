@@ -1,0 +1,8 @@
+{
+  "env": "test",
+  "server": {
+    "port": 4000,
+    "cache_control": false,
+    "playground": false
+  }
+}
