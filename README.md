@@ -1,6 +1,6 @@
-<h1 align="center"><strong>Game Grid Server</strong></h1>
+<strong>Game Grid GraphQL Server</strong>
 
-<br />
+Minimal GraphQL server to serve game data for app.
 
 ## Getting started
 
