@@ -1,4 +1,4 @@
-<strong>Minimal game grid renderer</strong>
+# Minimal game grid renderer
 
 Simple and minimal game grid renderer.
 

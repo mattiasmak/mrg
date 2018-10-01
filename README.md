@@ -1,4 +1,4 @@
-<strong>Game Grid GraphQL Server</strong>
+# Game Grid GraphQL Server
 
 Minimal GraphQL server to serve game data for app.
 
