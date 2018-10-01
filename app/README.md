@@ -4,7 +4,7 @@ Simple and minimal game grid renderer.
 
 
 ## Requirements
-Requires graphql to be started at `localhost:4000`
+Requires graphql server to be up and running at `http://localhost:4000/`
 
 
 ## Getting started
@@ -13,4 +13,6 @@ Requires graphql to be started at `localhost:4000`
 npm init
 npm start
 ```
+
+Then browse to: `http://localhost:8080/`
 
