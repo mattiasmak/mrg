@@ -1,0 +1,6 @@
+--recursive
+--forbid-only
+--forbid-pending
+--slow 10
+--timeout 100
+--exit
