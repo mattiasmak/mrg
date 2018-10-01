@@ -3,7 +3,7 @@
     <h2>Simple Game Grid</h2>
     <div class="game-list" v-if="games">
       <div class="game-list-item" v-for="game in games.games" v-bind:key="game.name">
-        <progressive-img :src="game.thumbnailUrl" placeholder="static/loader.gif" /> 
+        <progressive-img :src="game.thumbnailUrl" placeholder="static/loader.gif" :blur="0" /> 
       </div>
       <div class="actions">
         <button v-if="showMoreEnabled" @click="showMore">Show more games</button>
