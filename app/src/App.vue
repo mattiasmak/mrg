@@ -4,21 +4,22 @@
 
 
     <div  v-if="tags">
-      TAGS
       <select v-model="selected">
-        <option disabled value="">ALL TAGS</option>
-        <option  v-for="tag in tags" v-bind:key="tag.id" :id="tag.id">{{tag.id}}</option>
+        <option value="">ALL TAGS</option>
+        <option v-for="tag in tags" v-bind:key="tag.id" :id="tag.id">{{tag.id}}</option>
       </select>
     </div>
     
 
     <div class="game-list" v-if="games">
-      <div class="game-list-item" v-for="game in games.games" v-bind:key="game.name">
+      <div class="game-list-item" v-for="game in games.games" v-bind:key="game.id">
         <progressive-img :src="game.thumbnailUrl" placeholder="static/loader.gif" :blur="0" /> 
       </div>
       <div class="actions">
         <button v-if="showMoreEnabled" @click="showMore">Show more games</button>
+       
       </div>
+       <span>Page {{this.page+1}} of {{this.totalPages}}</span>
     </div>
   </div>
 </template>
@@ -43,6 +44,7 @@ export default {
   name: 'app',
   data: () => ({
     page: 0,
+    totalPages: 0,
     showMoreEnabled: true,
     selected: ''
   }),
@@ -59,7 +61,8 @@ export default {
         }
       }`,
       update(res) {
-        this.showMoreEnabled = res.games.pages > 1
+        this.showMoreEnabled = res.games.currentPage+1 < res.games.pages
+        this.totalPages = res.games.pages
         return res.games
       },
       variables() {
@@ -93,14 +96,11 @@ export default {
         },
         updateQuery: (previousResult, { fetchMoreResult }) => {
           const newGames = fetchMoreResult.games.games
-          const hasMore = fetchMoreResult.games.currentPage + 1 < fetchMoreResult.games.pages
-          this.showMoreEnabled = hasMore
-  
+          
           return {
             games: {
               __typename: previousResult.games.__typename,
               games: [...previousResult.games.games, ...newGames],
-              hasMore,
               pages: fetchMoreResult.games.pages,
               currentPage: fetchMoreResult.games.currentPage
             }
