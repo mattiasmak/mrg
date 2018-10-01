@@ -14,13 +14,13 @@
 
 <style>
   .game-list {
-    display:inline-block;
+    display: inline-block;
   }
   .game-list-item {
     width: 266px;
     height: 200px;
     padding: 10px;
-    display:inline-flex;
+    display: inline-block;
 }
 </style>
 
