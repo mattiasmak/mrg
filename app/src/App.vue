@@ -3,7 +3,7 @@
     <h2>Simple Game Grid</h2>
 
     <div  v-if="tags">
-      <select v-model="selected">
+      <select v-model="selectedTag">
         <option value="">ALL TAGS</option>
         <option v-for="tag in tags" v-bind:key="tag.id" :id="tag.id">{{tag.id}}</option>
       </select>
@@ -44,7 +44,7 @@ export default {
     page: 0,
     totalPages: 0,
     showMoreEnabled: true,
-    selected: ''
+    selectedTag: ''
   }),
   apollo: {
     games: {
@@ -68,7 +68,7 @@ export default {
       return {
         page: 0,
         pageSize: 10,
-        filter: this.selected != '' ? {tags:[this.selected]} : {tags:null} 
+        filter: this.selectedTag != '' ? {tags:[this.selectedTag]} : {tags:null} 
       }
     },
     },
