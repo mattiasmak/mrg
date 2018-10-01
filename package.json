@@ -10,8 +10,7 @@
     "lint-fix": "standard --fix",
     "test": "NODE_ENV=test mocha --opts mocha.opts src/"
   },
-  "author": "",
-  "license": "ISC",
+  "author": "Mattias Åkerman",
   "devDependencies": {
     "mocha": "^5.2.0",
     "nodemon": "^1.18.4",

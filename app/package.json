@@ -1,7 +1,7 @@
 {
   "name": "game-grid-mrg",
   "version": "0.0.1",
-  "description": "Minimal game grid renderer",
+  "description": "",
   "scripts": {
     "dev": "webpack-dev-server --inline --progress --config build/webpack.dev.conf.js",
     "start": "npm run dev",

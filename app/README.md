@@ -1,6 +1,13 @@
-<h1 align="center"><strong>Minimal game grid renderer</strong></h1>
+<strong>Minimal game grid renderer</strong>
+
+Simple and minimal game grid renderer.
+
 
 <br />
+
+## Requirements
+Requires graphql to be started at localhost:4000
+
 
 ## Getting started
 
