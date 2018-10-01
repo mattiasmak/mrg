@@ -3,7 +3,7 @@
     <h2>Simple Game Grid</h2>
     <div class="game-list" v-if="games">
       <div class="game-list-item" v-for="game in games.games" v-bind:key="game.name">
-        <img :src="game.thumbnailUrl"> 
+        <progressive-img :src="game.thumbnailUrl" placeholder="static/loader.gif" /> 
       </div>
       <div class="actions">
         <button v-if="showMoreEnabled" @click="showMore">Show more games</button>
@@ -21,7 +21,7 @@
     height: 200px;
     padding: 10px;
     display:inline-flex;
-  }
+}
 </style>
 
 <script>
@@ -52,7 +52,9 @@ export default {
       },
     },
   },
+  
   methods: {
+    
     showMore() {
       this.page ++
       this.$apollo.queries.games.fetchMore({
