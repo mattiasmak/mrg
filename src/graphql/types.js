@@ -58,6 +58,7 @@ type Game {
 type PagedGames {
   pages: Int,
   currentPage: Int,
+  gamesTotal: Int
   games: [Game]
 }
 

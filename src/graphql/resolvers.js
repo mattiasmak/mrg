@@ -12,7 +12,12 @@ module.exports = {
     },
     listGames (root, args, context) {
       const filteredList = dataHandler.getFilteredData({ gameProviders: args.filter.gameProviders, gameCollectionIds: args.filter.gameCollectionIds }, args.pageSize)
-      return { pages: filteredList.pages, currentPage: args.page, games: filteredList.page(args.page) }
+      return {
+        pages: filteredList.pages,
+        currentPage: args.page,
+        games: filteredList.page(args.page),
+        gamesTotal: filteredList.totalDataSize
+      }
     }
 
   },

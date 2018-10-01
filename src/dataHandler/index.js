@@ -49,6 +49,7 @@ module.exports = (data) => {
 
     return {
       pages: Math.ceil(filteredData.length / itemsPerPage),
+      totalDataSize: filteredData.length,
       page: page => {
         const firstItem = page * itemsPerPage
         return page >= 0 && firstItem < filteredData.length
