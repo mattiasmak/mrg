@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <h2>Pagination</h2>
+    <h2>Simple Game Grid</h2>
     <div class="tag-list" v-if="games">
       <div class="tag-list-item" v-for="game in games.games" v-bind:key="game.name">
         <img :src="game.thumbnailUrl"> 
@@ -60,6 +60,8 @@ export default {
               __typename: previousResult.games.__typename,
               games: [...previousResult.games.games, ...newGames],
               hasMore,
+              pages: fetchMoreResult.games.pages,
+              currentPage: fetchMoreResult.games.currentPage
             }
           }
         },
