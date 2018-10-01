@@ -65,5 +65,14 @@ describe('Data Handler', () => {
       expect(data).to.have.property('pages')
       expect(data).to.have.property('page')
     })
+    it('Should return a filtered list', () => {
+      const data = dataHandler(testData).getFilteredData({ gameProviders: ['SCIENTIFIC'] })
+      expect(data.totalDataSize).to.be.greaterThan(0)
+      expect(data.page(0)[0].gameProvider).to.equal('SCIENTIFIC')
+    })
+    it('Should honor itemsPerPage', () => {
+      const data = dataHandler(testData).getFilteredData(null, 5)
+      expect(data.page(0).length).to.equal(5)
+    })
   })
 })
