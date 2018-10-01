@@ -10,7 +10,7 @@ Requires graphql to be started at `localhost:4000`
 ## Getting started
 
 ```
-yarn
-yarn start
+npm init
+npm start
 ```
 
