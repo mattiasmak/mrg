@@ -1,5 +1,8 @@
+
 <template>
+
   <div id="app">
+    <router-view class="fullscreen-background"></router-view>
     <h2>Simple Game Grid</h2>
 
     <div  v-if="tags">
@@ -10,12 +13,11 @@
     </div>
 
     <div class="game-list" v-if="games">
-      <div class="game-list-item" v-for="game in games.games" v-bind:key="game.id">
+      <div class="game-list-item" v-for="game in games.games" v-bind:key="game.id" @click="showGame(game)">
         <progressive-img :src="game.thumbnailUrl" placeholder="static/loader.gif" :blur="0" /> 
       </div>
       <div class="actions">
-        <button v-if="showMoreEnabled" @click="showMore">Show more games</button>
-       
+        <button v-if="showMoreEnabled" @click="showMore">Show more games</button>  
       </div>
        <span>Page {{this.page+1}} of {{this.totalPages}}</span>
     </div>
@@ -31,7 +33,12 @@
     height: 200px;
     padding: 10px;
     display: inline-block;
-}
+  }
+  .fullscreen-background {
+    position:fixed;
+    height:100%;
+    width:100%;
+  }
 </style>
 
 <script>
@@ -53,8 +60,10 @@ export default {
           pages
           currentPage
           games {
+            id
             name
             thumbnailUrl
+            themeUrl
           }
         }
       }`,
@@ -86,6 +95,9 @@ export default {
   },
   
   methods: {
+    showGame(game) {
+      this.$router.push({ name: 'game', params: { id: game.id, game: game  }})
+    },
     showMore() {
       this.page++
       this.$apollo.queries.games.fetchMore({
