@@ -27,7 +27,7 @@ const apolloProvider = new VueApollo({
 
 const router = new Router({
   routes: [
-    { path: 'game/:id', name: 'game', component: Game }
+    { path: ' /game/:id', name: 'game', component: Game }
   ]
 })
 
